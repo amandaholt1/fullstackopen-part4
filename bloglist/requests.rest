@@ -1,0 +1,15 @@
+### GET all blogs
+GET http://localhost:3003/api/blogs
+
+###
+
+### POST new blog
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "My REST Client Blog",
+  "author": "Amanda Holt",
+  "url": "https://example.com",
+  "likes": 10
+}
