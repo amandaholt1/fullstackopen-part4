@@ -1,6 +1,18 @@
-require('dotenv').config();
+const path = require('path')
 
-const PORT = process.env.PORT || 3003;
-const MONGODB_URI = process.env.MONGODB_URI;
+const envFile =
+  process.env.NODE_ENV === 'test'
+    ? path.resolve(__dirname, '../.env.test')
+    : path.resolve(__dirname, '../.env')
 
-module.exports = { MONGODB_URI, PORT };
+require('dotenv').config({ path: envFile })
+
+const MONGODB_URI =
+  process.env.NODE_ENV === 'test'
+    ? process.env.TEST_MONGODB_URI
+    : process.env.MONGODB_URI
+
+const PORT = process.env.PORT || 3001
+const SECRET = process.env.SECRET
+
+module.exports = { MONGODB_URI, PORT, SECRET }
